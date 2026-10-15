@@ -1,0 +1,7 @@
+# 敏感文件：包含真实邮箱与授权码，禁止提交
+adress.txt
+
+# 运行时产物
+install.log
+*.log
+*.exe
