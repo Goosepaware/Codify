@@ -304,7 +304,8 @@ const plugin = {
             const used = (tk.input || 0) + ((tk.cache && tk.cache.read) || 0)
             let limit = 0
             if (info?.model) {
-              const models = await ctx.model.list().catch(() => [])
+              const out = await ctx.model.list().catch(() => undefined)
+              const models = Array.isArray(out) ? out : (out && Array.isArray(out.data) ? out.data : [])
               const m = models.find((x) => x.providerID === info.model.providerID && x.id === info.model.id)
               limit = (m && m.limit && m.limit.context) || 0
             }
